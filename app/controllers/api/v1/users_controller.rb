@@ -1,6 +1,10 @@
 class Api::V1::UsersController < ApplicationController
   respond_to :json
 
+  def index
+    respond_with User.all
+  end
+
   def show
     respond_with User.find(params[:id])
   end
@@ -8,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     user.status = 'A'
-    user.usuariotodaslojas = false
+    #user.usuariotodaslojas = true
 
     if user.save
       render json: user, status: 201, location: [:api, user]
