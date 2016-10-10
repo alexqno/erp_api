@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     user.status = 'A'
-    #user.usuariotodaslojas = true
+    user.usuariotodaslojas = true
 
     if user.save
       render json: user, status: 201, location: [:api, user]
